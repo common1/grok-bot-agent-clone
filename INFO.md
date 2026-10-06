@@ -2,12 +2,14 @@
 
 ```
 [https://www.npmjs.com/package/create-fastnextjs-app]
+[https://www.youtube.com/playlist?list=PLaBeGKL1tOU36nVztmb3vKs9qcpC2LTwD]
 ```
 
 ## 01 - Project Setup
 
 ```
-[https://www.youtube.com/playlist?list=PLaBeGKL1tOU36nVztmb3vKs9qcpC2LTwD]
+[https://www.youtube.com/watch?v=oqUyyB7ROHA&list=PLaBeGKL1tOU36nVztmb3vKs9qcpC2LTwD&index=1&t=1015s&pp=0gcJCWMAwfN6Pr3D]
+
 ```
 
 ```
@@ -84,4 +86,88 @@ Ok to proceed? (y) y
 ```
 npm run dev
 ```
+
+## 02 - How to Review code using AI
+
+```
+[https://www.youtube.com/watch?v=oqUyyB7ROHA&list=PLaBeGKL1tOU36nVztmb3vKs9qcpC2LTwD&index=1&t=1820s]
+```
+
+```
+Coderabbit Setup
+```
+
+## 03 - Setup Auth and DB
+
+```
+[https://www.youtube.com/watch?v=oqUyyB7ROHA&list=PLaBeGKL1tOU36nVztmb3vKs9qcpC2LTwD&index=1&t=2099s]
+```
+
+### 03.01 Database
+
+```
+Drop database and user
+
+psql -U postgres
+postgres=# DROP DATABASE grok_bot_db; 
+postgres=# DROP USER grok_bot_user; 
+
+```
+
+```
+Create database and user
+
+psql -U postgres
+postgres=# CREATE DATABASE grok_bot_db; 
+postgres=# CREATE USER grok_bot_user WITH ENCRYPTED PASSWORD 'WXYZ&6789'; 
+postgres=# GRANT ALL PRIVILEGES ON DATABASE grok_bot_db TO grok_bot_user; 
+postgres=# \c grok_bot_db postgres;
+You are now connected to database "grok_bot_db" as user "postgres"
+grok_bot_db=# GRANT ALL ON SCHEMA public TO grok_bot_user; 
+grok_bot_db=# ALTER USER grok_bot_user CREATEDB;
+```
+
+```
+Create DATABASE_URL in .env
+
+DATABASE_URL="postgres://grok_bot_user:WXYZ&6789@localhost:5432/grok_bot_db"
+```
+
+```
+npm run db:push
+
+> grok-bot-agent-clone@0.1.0 db:push
+> drizzle-kit push
+
+No config path provided, using default 'drizzle.config.ts'
+Reading config file 'D:\Projects\learning\TG_TubeGuruji\grok-bot-agent-clone\drizzle.config.ts'
+Using 'postgres' driver for database querying
+[✓] Pulling schema from database...
+[✓] Changes applied
+```
+
+```
+npm run db:studio
+
+> grok-bot-agent-clone@0.1.0 db:studio
+> drizzle-kit studio
+
+No config path provided, using default 'drizzle.config.ts'
+Reading config file 'D:\Projects\learning\TG_TubeGuruji\grok-bot-agent-clone\drizzle.config.ts'
+Using 'postgres' driver for database querying
+
+ Warning  Drizzle Studio is currently in Beta. If you find anything that is not working as expected or should be improved, feel free to create an issue on GitHub: https://github.com/drizzle-team/drizzle-kit-mirror/issues/new or write to us on Discord: https://discord.gg/WcRKz2FFxN
+```
+
+### 03.02 Authentication
+
+```
+[https://next-auth.js.org/]
+```
+
+```
+npm i axios
+```
+
+Current: 48:12
 
